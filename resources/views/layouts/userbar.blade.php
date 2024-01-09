@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>User Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Link your CSS files -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin_res/css/style.css">
+</head>
+<body>
+<div class="container d-flex align-items-stretch">
+    <!-- New UI Sidebar -->
+    <nav id="sidebar" class="img" style="background-image: url(admin_res/images/bg_1.jpg);">
+        <div class="p-4">
+            <a href="index.html"><img class="logo" src="admin_res/images/logo-white3.png" alt=""></a><span><br>User Dashboard</span>              
+            <ul class="list-unstyled components mb-5 flex-container">
+            <li class="active">
+                    <a href="{{ url('/userhome') }}"><span class="bi bi-house-door-fill icon-class"></span>Home</a>
+                </li>
+                <li class="">
+                    <a href="{{ url('/user_budgetplanner') }}"><span class="bi bi-wallet icon-class"></span> Budget Planner</a>
+                </li>
+                <li class="">
+                    <a href="{{ url('/user_investmentplanner') }}"><span class="bi bi-building icon-class"></span> Investment Planner</a>
+                </li>
+                <li>
+                    <a href="{{ url('/user_networthcalc') }}"><span class="bi bi-calculator icon-class"></span> Networth Calculator</a>
+                </li>
+                <li>
+                    <a href="{{ url('/user_debtcalc') }}"><span class="bi bi-bank icon-class"></span> Debt Manager</a>
+                </li>
+                <li>
+                    <a href="{{ url('/user_account') }}"><span class="fa fa-book mr-3"></span> Account Management</a>
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        <span class="fa fa-sign-out mr-3"></span> Logout
+                    </a>
+                
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+    // Get the current URL or page path
+    const currentPath = window.location.pathname;
+
+    // Get all list items in the sidebar
+    const sidebarLinks = document.querySelectorAll('#sidebar ul li');
+
+    // Loop through the sidebar links
+    sidebarLinks.forEach(link => {
+        // Get the anchor tag within the list item
+        const anchorTag = link.querySelector('a');
+
+        // Check if the anchor tag's href matches the current URL
+        if (anchorTag.getAttribute('href') === currentPath) {
+            // Add 'active' class to the parent list item
+            link.classList.add('active');
+        }
+    });
+</script>
+
+</body>   
+
+    </html>
